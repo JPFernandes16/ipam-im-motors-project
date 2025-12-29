@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The New IM L7 — IM Motors</title>
+  <meta name="description" content="Landing page minimalista para mostrar um veículo IM Motors em 360º 3D com AR." />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Model Viewer (CDN) -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="container">
+      <header class="hero">
+        <div class="brand">
+          <img class="logo" src="images/im-logo.svg" alt="IM Motors" />
+        </div>
+
+        <h1 class="title">The New IM L7</h1>
+        <p class="desc">
+          Luxury engineering meets next-generation electric performance.
+          Explora o carro em 360º com interação 3D — suave, realista e pronto para AR.
+        </p>
+      </header>
+
+      <section class="viewer-card" aria-label="Interactive 3D viewer">
+        <model-viewer
+          id="carViewer"
+          src="models/im-l6.glb"
+          ios-src="models/im-l6.usdz"
+          alt="IM Motors L6 3D model"
+
+          camera-controls
+          auto-rotate
+          shadow-intensity="1"
+
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+
+          environment-image="neutral"
+          exposure="1.1"
+          interaction-prompt="none"
+
+          camera-target="auto"
+          camera-orbit="25deg 75deg auto"
+          min-camera-orbit="auto auto 0.25m"
+          max-camera-orbit="auto auto 20m"
+          field-of-view="22deg"
+
+          /* ✅ ISTO AUMENTA O CARRO (não a área à volta) */
+          scale="8 8 8"
+
+          style="--progress-bar-height: 3px;"
+        >
+          <button slot="ar-button" class="ar-btn" type="button">View in AR</button>
+        </model-viewer>
+
+        <!-- Debug (hidden unless ?debug=1) -->
+        <div id="debugPanel" class="debug" hidden>
+          <div class="debug-row">
+            <span>Scale</span>
+            <span id="scaleValue" class="mono">8.0</span>
+          </div>
+          <input id="scaleRange" type="range" min="1" max="20" step="0.5" value="8" />
+          <div class="debug-hint">Dica: 6–12 costuma ser o “sweet spot” para modelos com escala estranha.</div>
+        </div>
+      </section>
+
+      <section class="media-card" aria-label="IM L7 video">
+        <div class="media-header">
+          <h2 class="media-title">Design in Motion</h2>
+          <p class="media-desc">Um vislumbre rápido do caráter e presença do IM L7.</p>
+        </div>
+
+        <div class="video-shell">
+          <video
+            class="video"
+            src="video/vid-l6.mp4"
+            muted
+            autoplay
+            loop
+            playsinline
+            preload="metadata"
+            controls
+          ></video>
+        </div>
+      </section>
+
+      <section class="academic" aria-label="Academic information">
+    <div class="academic-card">
+        <h3 class="academic-title">Academic Information</h3>
+
+        <div class="academic-grid">
+        <div class="academic-item">
+            <div class="label">Instituto</div>
+            <div class="value">IPAM- Instituto Português de Administração de Marketing</div>
+        </div>
+
+        <div class="academic-item">
+            <div class="label">Cadeira</div>
+            <div class="value">Simulador de Gestão de Marketing </div>
+        </div>
+
+        <div class="academic-item">
+            <div class="label">Título do Trabalho</div>
+            <div class="value">IM Motors</div>
+        </div>
+
+        <div class="academic-item academic-item--full">
+            <div class="label">Participantes</div>
+            <ol class="members">
+            <li>Ana Vasconcelos</li>
+            <li>Daniela Rocha </li>
+            <li>Matilde Ribeiro</li>
+            <li>Mariana Nogueira</li>
+            <li>Sara Barbosa</li>
+            </ol>
+        </div>
+        </div>
+    </div>
+    </section>
+
+
+      <footer class="footer">
+        <div class="credit">
+          Modelo 3D:
+          <a href="https://sketchfab.com/3d-models/im-motors-l6-33ad720821f24cabb5bd1b1dfd3cdbb7" target="_blank" rel="nofollow noopener">
+            “im motors L6”
+          </a>
+          por
+          <a href="https://sketchfab.com/MattDoesBlender" target="_blank" rel="nofollow noopener">
+            MattDoesBlender
+          </a>
+          (Sketchfab) — Licença <strong>CC BY-NC-SA</strong>.
+        </div>
+
+      </footer>
+    </div>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
